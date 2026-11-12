@@ -28,9 +28,10 @@ database/  schema.sql (SQLite file is created here)
 ## API
 `POST /api/compile {source}` · `GET /api/examples` · `GET /api/language` · `GET|POST /api/programs` · `DELETE /api/programs/:id` · `GET /api/history` · `GET /api/health`
 
-## Deploy
-- **Frontend (Vercel):** root `client`, framework Vite, env `VITE_API_URL` = backend URL (no trailing slash).
-- **Backend (Render/Railway):** root `server`, build `npm install`, start `npm start`, env `CORS_ORIGIN` = your Vercel URL. SQLite lives in a file, so attach a persistent disk and set `DB_FILE` to a path on it (otherwise saved programs reset on each deploy).
+## Deploy (everything on Vercel)
+Import the GitHub repo in Vercel and leave **Root Directory = `./`** (the repo root). `vercel.json` handles the rest: it builds `client/` as the static site and serves the Express API from `api/index.js` on the same domain, so no env vars are needed.
+
+On Vercel the SQLite file lives in `/tmp`, which is temporary: examples and the language data are re-seeded on every start, but saved programs and history reset when Vercel recycles the function. For permanent storage, host the backend on Render/Railway with a persistent disk (`npm start` in `server/`, set `DB_FILE` to a path on the disk and `CORS_ORIGIN` to the Vercel URL) and set `VITE_API_URL` on Vercel to that backend URL.
 
 ## Language guide for the professor
 Grammar is on the Language page. Statements end with `;`; `^*` `^/` bind tighter than `^+` `^-`. Try:

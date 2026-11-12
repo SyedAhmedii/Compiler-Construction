@@ -5,7 +5,9 @@ import { EXAMPLES } from './examples.js';
 import { KEYWORD_ROWS } from './language.js';
 
 // The whole database is one file; it is created and seeded automatically on startup.
-const file = process.env.DB_FILE || fileURLToPath(new URL('../../database/vantor.db', import.meta.url));
+// On Vercel only /tmp is writable (and it is wiped between cold starts), so use it there.
+const file = process.env.DB_FILE
+  || (process.env.VERCEL ? '/tmp/vantor.db' : fileURLToPath(new URL('../../database/vantor.db', import.meta.url)));
 export const db = new Database(file);
 db.pragma('foreign_keys = ON');
 db.exec(fs.readFileSync(new URL('../../database/schema.sql', import.meta.url), 'utf8'));

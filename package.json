@@ -1,0 +1,10 @@
+{
+  "name": "vantor-studio",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "vercel-install": "npm install --prefix server && npm install --prefix client",
+    "vercel-build": "npm run build --prefix client"
+  }
+}
