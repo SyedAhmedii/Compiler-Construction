@@ -1,0 +1,31 @@
+:root{--bg:#0E1116;--bg2:#161B22;--line:#2a313c;--fg:#e6e9ef;--mut:#8b94a3;--pri:#7C5CFF;--acc:#FFB020;--ok:#3fb950;--bad:#f85149;--font:'Inter',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+[data-theme=light]{--bg:#f6f7fb;--bg2:#fff;--line:#d9dde6;--fg:#171b24;--mut:#5d6677}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:14px var(--font)}
+a{color:var(--pri)}button{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--bg2);color:var(--fg);padding:6px 12px;border-radius:6px}
+button:hover{border-color:var(--pri)}button.primary{background:var(--pri);border-color:var(--pri);color:#fff}button:disabled{opacity:.6}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.shell{display:grid;grid-template-columns:64px 1fr;grid-template-rows:1fr 28px;height:100vh}
+.rail{grid-row:1/3;background:var(--bg2);border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0}
+.rail a{width:52px;padding:8px 0;text-align:center;color:var(--mut);text-decoration:none;font-size:10px;border-radius:8px}
+.rail a b{display:block;font-size:18px}.rail a.active{background:var(--pri);color:#fff}.rail .sp{flex:1}
+main{overflow:auto;min-height:0}.page{padding:24px;max-width:1000px;margin:auto}
+.status{background:var(--bg2);border-top:1px solid var(--line);display:flex;gap:16px;align-items:center;padding:0 14px;color:var(--mut);font-size:12px}
+.studio{display:grid;grid-template-columns:1fr 1fr;height:100%}@media(max-width:900px){.studio{grid-template-columns:1fr;grid-auto-rows:minmax(420px,1fr)}.shell{grid-template-columns:52px 1fr}}
+.pane{display:flex;flex-direction:column;min-height:0;border-right:1px solid var(--line)}
+.bar{display:flex;gap:8px;align-items:center;padding:8px 12px;border-bottom:1px solid var(--line);background:var(--bg2);flex-wrap:wrap}.bar .sp{flex:1}
+.logo{display:flex;align-items:center;gap:8px;font-weight:600}
+.editor{position:relative;flex:1;font:14px/22px var(--mono)}
+.editor .hl,.editor textarea{position:absolute;inset:0;margin:0;font:inherit;white-space:pre;padding:8px 8px 8px 0}
+.editor .hl{overflow:hidden;pointer-events:none}.editor .ln{display:inline-block;width:44px;padding-right:8px;margin-right:8px;text-align:right;color:var(--mut);user-select:none}
+.editor .ln.err{color:#fff;background:var(--bad);border-radius:3px}.editor .errline{text-decoration:underline wavy var(--bad)}
+.editor textarea{padding-left:52px;background:transparent;color:transparent;caret-color:var(--fg);border:0;resize:none;outline:0;overflow:auto}
+.k{color:var(--pri)}.t{color:var(--acc)}.s{color:#3fb950}.n{color:#58a6ff}.c{color:var(--mut)}.o{color:#ff7b72}
+.stepper{display:flex;gap:6px;padding:10px 12px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.step{display:flex;gap:6px;align-items:center}.badge{font-size:11px;padding:2px 7px;border-radius:10px;border:1px solid var(--line);color:var(--mut)}
+.badge.pass{color:var(--ok);border-color:var(--ok)}.badge.fail{color:var(--bad);border-color:var(--bad)}
+.tabs{display:flex;overflow:auto;border-bottom:1px solid var(--line)}.tabs button{border:0;border-radius:0;background:none;color:var(--mut);white-space:nowrap}.tabs button.on{color:var(--fg);box-shadow:inset 0 -2px var(--pri)}
+.out{flex:1;overflow:auto;padding:12px}table{border-collapse:collapse;width:100%}th,td{text-align:left;padding:5px 10px;border-bottom:1px solid var(--line);font-size:13px}
+pre,.mono{font-family:var(--mono)}pre{margin:0;white-space:pre-wrap}.err{color:var(--bad)}.muted{color:var(--mut)}.ok{color:var(--ok)}
+details{margin-left:6px}summary{cursor:pointer}.tc{margin-left:14px;border-left:1px dashed var(--line);padding-left:10px}.leaf{margin-left:20px}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:14px;margin:10px 0}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.toasts{position:fixed;right:16px;bottom:44px;display:grid;gap:8px;z-index:9}.toast{background:var(--bg2);border:1px solid var(--line);border-left:4px solid var(--ok);padding:10px 14px;border-radius:6px}.toast.error{border-left-color:var(--bad)}
